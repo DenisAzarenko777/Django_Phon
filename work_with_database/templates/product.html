@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Телефон{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1>Телефон</h1>
+        </div>
+        <div class="content">
+            {% for ph in Phoness %}
+            <h1><a href="/catalog/{{ph.slug}}"> {{ph.name}}</a></h1>
+            <h4>стоимость: {{ph.price}}</h4>
+            <h4>Релиз: {{ph.release_date}}</h4>
+           <img src={{ph.image}} alt="Телефон">
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

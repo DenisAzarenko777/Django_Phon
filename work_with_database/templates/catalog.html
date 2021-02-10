@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Каталог{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/catalog">Каталог</a></h1>
+            <style>
+   ul.hr {
+    margin: 0; /* Обнуляем значение отступов */
+    padding: 4px; /* Значение полей */
+   }
+   ul.hr li {
+    display: inline; /* Отображать как строчный элемент */
+    margin-right: 5px; /* Отступ слева */
+   }
+  </style>
+        </div>
+        <div class="sort-block">
+            <ul class="hr">
+                <li>Сортировать по: </li>
+                <li> <a href="/catalog?sort=name">названию</a>  </li>
+                <li>  <a href="/catalog?sort=min_price">начиная с дешевых </a>  </li>
+                <li>   <a href="/catalog?sort=max_price">начиная с дорогих</a> </li>
+  </ul>
+        </div>
+
+        <div class="content">
+            {% for ph in Phoness %}
+            <h1><a href="/catalog/{{ph.slug}}"> {{ph.name}}</a></h1>
+            <h4>стоимость: {{ph.price}}</h4>
+           <img src={{ph.image}} alt="Телефон">
+            {% endfor %}
+            {# Здесь должен отображаться каталог с телефонами #}
+        </div>
+    </div>
+{% endblock %}
